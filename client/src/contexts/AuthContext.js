@@ -18,7 +18,24 @@ const AuthContextProvider = ({children}) => {
         try{
             const response = await axios.post(`${apiUrl}/login`,userForm)
             console.log(response.status)
-           
+            
+            //localStorage.setItem(LOCAL_STORAGE_TOKEN_NAME, response.data.accessToken)
+             
+            return response
+        } catch(error){
+            if(error.response) return error.response.data
+            else return {success: false, message: error.message}
+
+        }
+
+    }
+
+    //Register
+       const registerUser = async userForm =>{
+        try{
+            const response = await axios.post(`${apiUrl}/register`,userForm)
+            console.log(response.status)
+            
             //localStorage.setItem(LOCAL_STORAGE_TOKEN_NAME, response.data.accessToken)
              
             return response
@@ -30,7 +47,10 @@ const AuthContextProvider = ({children}) => {
 
     }
     //  Context data
-    const authContextData = {loginUser}
+    const authContextData = {
+        loginUser,
+        registerUser
+    }
     
     // Return Provider
     return (

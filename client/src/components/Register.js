@@ -1,8 +1,44 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import {useContext, useState} from 'react'
+import { AuthContext } from '../contexts/AuthContext'
 
 const Register = () => {
    
+    const {registerUser} =useContext(AuthContext)
+
+    //Router 
+    
+
+    const [registerForm,setRegisterForm] = useState({
+        username: '',
+        password: '',
+        confirmPassword: '',
+    })
+    const {username, password, confirmPassword} = registerForm
+    const onChangeRegisterForm = event => setRegisterForm({...registerForm, [event.target.name]:event.target.value})
+
+    const register = async event => {
+        event.preventDefault()
+
+        if (password !== confirmPassword){
+            alert('Password do not match')
+            return
+        }
+        try {
+          const registerData = await registerUser(registerForm)
+          console.log(registerData.status)
+        if(registerData.status!==200) {
+            alert('Password do not match')
+          
+
+        }  
+
+        }
+        catch (error) {console.log(error)}
+        
+    }
+
   return (
     <div className='h-screen flex bg-gray-bg1 bg-gradient-to-r from-purple-500 to-pink-500 '>
             <div className='w-full max-w-md m-auto bg-white rounded-lg border border-primaryBorder shadow-default py-10 px-16'>
@@ -18,6 +54,9 @@ const Register = () => {
                             className={`w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4`}
                             id='text'
                             placeholder='Username'
+                            name = 'username'
+                            value={username}
+                            onChange={onChangeRegisterForm}
                         />
                     </div>
                     <div>
@@ -27,6 +66,9 @@ const Register = () => {
                             className={`w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4`}
                             id='password'
                             placeholder='Your Password'
+                            name='password'
+                            value={password}
+                            onChange={onChangeRegisterForm}
                         />
                     </div>
                     <div>
@@ -36,12 +78,16 @@ const Register = () => {
                             className={`w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4`}
                             id='password'
                             placeholder='Your Password'
+                            name='confirmPassword'
+                            value={confirmPassword}
+                            onChange={onChangeRegisterForm}
                         />
                     </div>
 
                     <div className='flex justify-center items-center mt-6'>
                         <button
                             className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                        onClick={register}
                         >
                             Register
                         </button>
