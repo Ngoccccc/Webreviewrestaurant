@@ -11,11 +11,12 @@ const Register = () => {
     
 
     const [registerForm,setRegisterForm] = useState({
+        nickname : '',
         username: '',
         password: '',
         confirmPassword: '',
     })
-    const {username, password, confirmPassword} = registerForm
+    const {nickname,username, password, confirmPassword} = registerForm
     const onChangeRegisterForm = event => setRegisterForm({...registerForm, [event.target.name]:event.target.value})
 
     const register = async event => {
@@ -27,9 +28,9 @@ const Register = () => {
         }
         try {
           const registerData = await registerUser(registerForm)
-          console.log(registerData.status)
+          console.log(registerData)
         if(registerData.status!==200) {
-            alert('Password do not match')
+            alert('chu be dan')
           
 
         }  
@@ -46,7 +47,18 @@ const Register = () => {
                     Register tab
                 </h1>
 
-                
+                    <div>
+                        <label htmlFor='email'>Nickname</label>
+                        <input
+                            type='text'
+                            className={`w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4`}
+                            id='text'
+                            placeholder='Nickname'
+                            name = 'nickname'
+                            value={nickname}
+                            onChange={onChangeRegisterForm}
+                        />
+                    </div>
                     <div>
                         <label htmlFor='email'>Username</label>
                         <input
