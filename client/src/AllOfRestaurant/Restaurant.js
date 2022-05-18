@@ -5,7 +5,7 @@ const Restaurant = ({id,name,description,image}) => {
   
   return (
     
-    <div>
+    <div >
       <img className="object-scale-down h-48 w-96" src={image} alt=""/>
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2">{name}</div>

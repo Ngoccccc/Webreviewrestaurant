@@ -63,14 +63,14 @@ class RestaurantController extends Controller
     public function edit(Request $request, $id){
         
         //  Check permission
-        $res = DB::select('SELECT [user_id] FROM [Restaurants] WHERE [id] = ?', [$id]);
+        $res = DB::select('SELECT `user_id` FROM `Restaurants` WHERE `id` = ?', [$id]);
         if(empty($res)){
             return response()->json([
                 'content' => 'Restaurant is not exist'
             ], 401);
         }
         $cur_token = $request->cookie('_token');
-        $id_user = DB::select('SELECT [id] FROM [users] WHERE [_token] = ?', [$cur_token]);
+        $id_user = DB::select('SELECT `id` FROM `users` WHERE `_token` = ?', [$cur_token]);
         if($res[0]->user_id !== $id_user[0]->id){
             return response()->json([
                 'content' => 'You don\'t have permission',
@@ -86,17 +86,17 @@ class RestaurantController extends Controller
         ], 200);
     }
 
-    public function update(Request $request, $id){
+    public function update(Request $request, $id, $token){
         
         //  Check permission
-        $res = DB::select('SELECT [user_id] FROM [Restaurants] WHERE [id] = ?', [$id]);
+        $res = DB::select('SELECT `user_id` FROM `Restaurants` WHERE `id` = ?', [$id]);
         if(empty($res)){
             return response()->json([
                 'content' => 'Restaurant is not exist'
             ], 401);
         }
-        $cur_token = $request->cookie('_token');
-        $id_user = DB::select('SELECT [id] FROM [users] WHERE [_token] = ?', [$cur_token]);
+        $cur_token = $token;
+        $id_user = DB::select('SELECT `id` FROM `Users` WHERE `_token` = ?', [$cur_token]);
         if($res[0]->user_id !== $id_user[0]->id){
             return response()->json([
                 'content' => 'You don\'t have permission',
@@ -104,7 +104,7 @@ class RestaurantController extends Controller
         }
         
         //  Update
-        $user_id = DB::table('users')->where('_token', $request->cookie('_token'))->value('id');
+        $user_id = DB::table('Users')->where('_token', $cur_token)->value('id');
 
         //  Validate
         $validator = Validator::make($request->all(), [
@@ -120,13 +120,14 @@ class RestaurantController extends Controller
 
         $restaurants = Restaurants::all();
         $res = $restaurants->find($id);
-        $res->user_id = $user_id;
+        // $res->user_id = $user_id;
+        
         $fileName = '';
         if($request->hasFile('image')){
             $file = $request->file('image');
             $extension = $file->getClientOriginalExtension();
             $fileName = time().'.'.$extension;
-            $file->move('D:/xampp/htdocs/Webdemo/client/src/uploads/images/', $fileName);
+            $file->move('D:\xampp\htdocs\Webdemo\client\src\uploads\images', $fileName);
         }
         $res->update([
             'res_name' => $request['name'],
@@ -134,23 +135,26 @@ class RestaurantController extends Controller
             'res_image' => $fileName
         ]);
 
-
         return response()->json([
-            'content' => 'Update Restaurant Successfully!'
+            'content' => 'Update Restaurant Successfully!',
+            'id' => $id,
+            'token' => $token,
+            'res_image' => $fileName
         ], 200);
     }
 
-    public function delete(Request $request, $id){
+
+    public function delete(Request $request, $id, $token){
         
         //  Check permission
-        $res = DB::select('SELECT [user_id] FROM [Restaurants] WHERE [id] = ?', [$id]);
+        $res = DB::select('SELECT `user_id` FROM `restaurants` WHERE `id` = ?', [$id]);
         if(empty($res)){
             return response()->json([
                 'content' => 'Restaurant is not exist'
             ], 401);
         }
-        $cur_token = $request->cookie('_token');
-        $id_user = DB::select('SELECT [id] FROM [users] WHERE [_token] = ?', [$cur_token]);
+        $cur_token = $token;
+        $id_user = DB::select('SELECT `id` FROM `users` WHERE `_token` = ?', [$cur_token]);
         if($res[0]->user_id !== $id_user[0]->id){
             return response()->json([
                 'content' => 'You don\'t have permission',

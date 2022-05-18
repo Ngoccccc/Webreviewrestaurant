@@ -7,6 +7,7 @@ import logoutIcon from '../views/logout.svg'
 const Dashboard = () => {
   
   return (
+    
     <nav className="bg-container flex justify-around mx-auto h-14 bg-gradient-to-r from-sky-500 to-indigo-500">
     <div className="flex items-left">
     <h1 className="text-3xl text-cyan-100">Review Restaurant app</h1>

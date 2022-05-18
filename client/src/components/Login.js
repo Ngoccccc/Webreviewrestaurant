@@ -36,7 +36,7 @@ const Login = () => {
     }
     
     return (
-        <div className='h-screen flex bg-gray-bg1 bg-gradient-to-r from-purple-500 to-pink-500 '>
+        <div className='h-screen bg-bg-imagecustom flex bg-gray-bg1 '>
             <div className='w-full max-w-md m-auto bg-white rounded-lg border border-primaryBorder shadow-default py-10 px-16'>
                 <h1 className='text-2xl font-medium text-primary mt-4 mb-12 text-center'>
                     Please Log in to start

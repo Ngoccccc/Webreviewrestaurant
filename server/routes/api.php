@@ -36,8 +36,8 @@ Route::prefix('restaurant')->group(function(){
     Route::get('/my-index/{token}', [RestaurantController::class, 'myIndex']);
     Route::get('/index', [RestaurantController::class, 'index']);
     //-----------------------------------------------------------------
-    Route::get('/edit/{id}', [RestaurantController::class, 'edit']);
-    Route::get('/update/{id}', [RestaurantController::class, 'update']);
-    Route::delete('/delete/{id}', [RestaurantController::class, 'delete']);
+    Route::get('/edit/{id}/{token}', [RestaurantController::class, 'edit']);
+    Route::post('/update/{id}/{token}', [RestaurantController::class, 'update']);
+    Route::delete('/delete/{id}/{token}', [RestaurantController::class, 'delete']);
 });
 //-----------------------------------------------------------------------------

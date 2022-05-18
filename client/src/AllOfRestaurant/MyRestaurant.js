@@ -5,15 +5,12 @@ import Dashboard from '../components/Dashboard'
 import ShowMore from './ShowMore'
 import Restaurant from './Restaurant'
 import Edit from './Edit'
+import Delete from './Delete'
 
 const MyRestaurant = () => {
     const {restaurant, getMyRestaurants} = useContext(RestaurantContext)
     useEffect(()=>getMyRestaurants ,[])
 
-
-
-
-    
 
   return (
     <>
@@ -34,6 +31,7 @@ const MyRestaurant = () => {
                   description={res.res_description}
                   />
                   <Edit res={res}/>
+                  <Delete res={res}/>
                   </div>
                 )
             })
