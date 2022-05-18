@@ -121,10 +121,19 @@ class RestaurantController extends Controller
         $restaurants = Restaurants::all();
         $res = $restaurants->find($id);
         $res->user_id = $user_id;
-        $res->res_name = $request['name'];
-        $res->res_description = $request['description'];
-        $res->res_image = $request['image'];
-        $res->save();
+        $fileName = '';
+        if($request->hasFile('image')){
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $fileName = time().'.'.$extension;
+            $file->move('D:/xampp/htdocs/Webdemo/client/src/uploads/images/', $fileName);
+        }
+        $res->update([
+            'res_name' => $request['name'],
+            'res_description' => $request['description'],
+            'res_image' => $fileName
+        ]);
+
 
         return response()->json([
             'content' => 'Update Restaurant Successfully!'

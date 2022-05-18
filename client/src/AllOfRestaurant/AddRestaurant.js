@@ -4,6 +4,7 @@ import {RestaurantContext} from '../contexts/RestaurantContext'
 import axios from 'axios'
 import { apiUrl} from '../contexts/constants'
 import {useNavigate} from "react-router-dom"
+import Dashboard from '../components/Dashboard'
 
 const AddRestaurant = () => {
 
@@ -42,6 +43,8 @@ const AddRestaurant = () => {
     }
   
     return (
+        <>
+        <Dashboard/>
         <div className='h-screen flex bg-gray-bg1 bg-gradient-to-r from-purple-500 to-pink-500 '>
             <div className='w-full max-w-md m-auto bg-white rounded-lg border border-primaryBorder shadow-default py-10 px-16'>
                 <h1 className='text-2xl font-medium text-primary mt-4 mb-12 text-center'>
@@ -89,6 +92,7 @@ const AddRestaurant = () => {
                 
             </div>
         </div>
+        </>
   )
 }
 

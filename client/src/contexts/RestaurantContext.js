@@ -8,7 +8,7 @@ export const RestaurantContext = createContext()
 
 const RestaurantProvider = ({children})=>{
     const [restaurant,setRestaurant] = useState([])
-
+    const [addNewRestaurant,setAddNewRestaurant] = useState()
 
     const getRestaurants = async () => {
         try{
