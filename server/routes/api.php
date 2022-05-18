@@ -30,9 +30,10 @@ Route::post('register', [LoginApiController::class, 'register']);
 
 
 //----------------- RESTAURANT CONTROLLER API----------------------------------
-Route::middleware('auth.token')->prefix('restaurant')->group(function(){
+Route::prefix('restaurant')->group(function(){
     //-----------------------------------------------------------------
     Route::post('/store', [RestaurantController::class, 'store']);
+    Route::get('/my-index/{token}', [RestaurantController::class, 'myIndex']);
     Route::get('/index', [RestaurantController::class, 'index']);
     //-----------------------------------------------------------------
     Route::get('/edit/{id}', [RestaurantController::class, 'edit']);

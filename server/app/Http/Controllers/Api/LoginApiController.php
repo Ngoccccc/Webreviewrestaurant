@@ -53,7 +53,10 @@ class LoginApiController extends Controller
         $token = Str::random(256);
         $user->update(['_token' => $token]);
 
-        return defaultResponse('Login successfully', 200)->cookie('_token', $token, 60);
+        return response() ->json([
+            'content' => 'Login successful',
+            'token' => $token
+        ],200);
     }
 
     public function logout(Request $request){

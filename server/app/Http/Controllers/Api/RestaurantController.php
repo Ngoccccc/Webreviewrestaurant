@@ -19,6 +19,15 @@ class RestaurantController extends Controller
         ], 200);
     }
 
+    public function myIndex(Request $request, $token){
+        $user_id = DB::table('Users')->where('_token', $token)->value('id');
+        $restaurants = DB::table('Restaurants')->where('user_id', $user_id)->get();
+        
+        return response()->json([
+            'restaurants' => $restaurants
+        ], 200);
+    }
+
     public function store(Request $request){
         $user_id = DB::table('users')->where('_token', $request->cookie('_token'))->value('id');
 

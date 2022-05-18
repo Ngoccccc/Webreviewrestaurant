@@ -6,12 +6,14 @@ import Register from './components/Register'
 import Auth from './components/Auth'
 import AuthContextProvider from './contexts/AuthContext'
 import Dashboard from './components/Dashboard'
-
+import Home from './components/Home'
+import RestaurantProvider from './contexts/RestaurantContext'
+import MyRestaurant from './AllOfRestaurant/MyRestaurant'
 
 function App() {
   return (
       
-      
+      <RestaurantProvider>
       <AuthContextProvider>
        <Routes>
          <Route path ='/' element ={<Auth/>} >
@@ -20,11 +22,14 @@ function App() {
            <Route path='/register' element={<Register />}/>
 
 
-           <Route path='/dashboard' element={<Dashboard />}/>
+           <Route path='/dashboard' element={<Home />}/>
+           <Route path='/restaurant' element={<MyRestaurant />}/>
+           
          </Route>
 
        </Routes>
       </AuthContextProvider>
+      </RestaurantProvider>
     
   )
 }
