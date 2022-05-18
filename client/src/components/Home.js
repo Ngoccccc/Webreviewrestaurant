@@ -19,6 +19,7 @@ const Home = () => {
                 return(
                    
                      <Restaurant id={idx}
+                        image={require(`../uploads/images/${res.res_image}`)}
                         name={res.res_name}
                         description={res.res_description}/>
                     

@@ -16,6 +16,7 @@ const Dashboard = () => {
       <div className="text-yellow-50 items-center mr hidden space-x-8 lg:flex">
         <Link to="/dashboard">Home</Link>
         <Link to="/restaurant">My Restaurant</Link>
+        <Link to="/create">Create New Restaurant</Link>
         <Link to="/login">
         <button variant='secondary'>
                         <img

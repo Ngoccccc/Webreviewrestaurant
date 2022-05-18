@@ -44,7 +44,8 @@ const RestaurantProvider = ({children})=>{
             if(error.response) return error.response.data
             else return {success: false, message: error.message}
 
-        }}
+        }
+    }
     
    
 

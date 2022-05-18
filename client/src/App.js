@@ -9,6 +9,7 @@ import Dashboard from './components/Dashboard'
 import Home from './components/Home'
 import RestaurantProvider from './contexts/RestaurantContext'
 import MyRestaurant from './AllOfRestaurant/MyRestaurant'
+import AddRestaurant from './AllOfRestaurant/AddRestaurant';
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
 
            <Route path='/dashboard' element={<Home />}/>
            <Route path='/restaurant' element={<MyRestaurant />}/>
-           
+           <Route path='/create' element={<AddRestaurant/>}/>
          </Route>
 
        </Routes>
