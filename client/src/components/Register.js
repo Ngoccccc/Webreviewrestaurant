@@ -1,10 +1,11 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import {useContext, useState} from 'react'
 import { AuthContext } from '../contexts/AuthContext'
 
+
 const Register = () => {
-   
+    const navigate = useNavigate()
     const {registerUser} =useContext(AuthContext)
 
     //Router 
@@ -29,6 +30,8 @@ const Register = () => {
         try {
           const registerData = await registerUser(registerForm)
           console.log(registerData)
+          navigate('/login')
+
         if(registerData.status!==200) {
             alert('chu be dan')
           

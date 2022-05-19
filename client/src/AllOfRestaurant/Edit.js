@@ -78,7 +78,7 @@ export default function Edit(dataEdit) {
                             id='text'
                             placeholder='Name'
                             name = 'res_name'
-                            value={data.res_name}
+                            
                             onChange={(event) => setData({...data, res_name: event.target.value})}
                         />
                     </div>
@@ -90,14 +90,14 @@ export default function Edit(dataEdit) {
                             id='description'
                             placeholder='Description'
                             name='res_description'
-                            value={data.res_description}
+                            
                             onChange={(event) => setData({...data, res_description: event.target.value})}
                         />
                     </div>
                     <div className="px-4">
                         <p className="text-2xl font-medium">Image</p>
                         
-                        <img className="max-h-[300px] bg-center" src={require(`../uploads/images/${data.res_image}`)} alt="Unknown" />
+                        
                         <input id="img" className="py-5 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" type="file" name="image" onChange={ (e) => setImage(e.target.files[0]) } />
                     </div>
 

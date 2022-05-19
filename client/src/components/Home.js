@@ -18,7 +18,7 @@ const Home = () => {
             restaurant && restaurant.map((res,idx) => {
                 
                 return(
-                  <div className="rounded-2xl shadow-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 object-cover h-fit m-10 max-w-sm overflow-hidden shadow-lg">
+                  <div className="bg-bg-image3 rounded-2xl shadow-violet-600 text-white active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 object-cover h-fit m-10 max-w-sm overflow-hidden shadow-lg">
                      <div className="">
                      <Restaurant id={idx}
                         image={require(`../uploads/images/${res.res_image}`)}
