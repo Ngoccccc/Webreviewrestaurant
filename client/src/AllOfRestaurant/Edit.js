@@ -41,7 +41,7 @@ export default function Edit(dataEdit) {
   return (
     <>
       <button
-        className="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+        className="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900"
         type="button"
         onClick={() => setShowModal(true)}
       >
@@ -50,28 +50,28 @@ export default function Edit(dataEdit) {
       {showModal ? (
         <>
           <div
-            className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
+            className=" flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
           >
-            <div className="relative w-auto my-6 mx-auto max-w-3xl">
+            <div className="w-500px my-6 mx-auto min-w-[400px]">
               {/*content*/}
-              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+              <div className="border-0 rounded-lg shadow-lg w-full bg-white outline-none focus:outline-none">
                 {/*header*/}
-                <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
-                  <h3 className="text-3xl font-semibold">
-                    Modal Title
+                <div className="items-start justify-between p-5 rounded-t">
+                  <h3 className="text-3xl text-center font-semibold">
+                    EDIT TAB
                   </h3>
                   <button
                     className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
                     onClick={() => setShowModal(false)}
                   >
-                    <span className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
+                    <span className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl outline-none focus:outline-none">
                       ×
                     </span>
                   </button>
                 </div>
                 {/*body*/}
-                <div>
-                        <label htmlFor='email'>Restaurant's Name</label>
+                <div className = 'm-4'>
+                        <label className='pl-3 text-2xl block text-gray-700 font-bold mb-2' htmlFor='email'>Restaurant's Name</label>
                         <input
                             type='text'
                             className={`w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4`}
@@ -82,8 +82,8 @@ export default function Edit(dataEdit) {
                             onChange={(event) => setData({...data, res_name: event.target.value})}
                         />
                     </div>
-                    <div>
-                        <label >Description</label>
+                    <div className = 'm-4'>
+                        <label className='pl-3 text-2xl block text-gray-700 font-bold'>Description</label>
                         <input
                             
                             className={`w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4`}
@@ -94,10 +94,11 @@ export default function Edit(dataEdit) {
                             onChange={(event) => setData({...data, res_description: event.target.value})}
                         />
                     </div>
-                    <div>
+                    <div className="px-4">
                         <p className="text-2xl font-medium">Image</p>
-                        <img className="p-4 bg-center" src={require(`../uploads/images/${data.res_image}`)} alt="Unknown" />
-                        <input id="img" className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" type="file" name="image" onChange={ (e) => setImage(e.target.files[0]) } />
+                        
+                        <img className="max-h-[300px] bg-center" src={require(`../uploads/images/${data.res_image}`)} alt="Unknown" />
+                        <input id="img" className="py-5 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" type="file" name="image" onChange={ (e) => setImage(e.target.files[0]) } />
                     </div>
 
                     <div className='flex justify-center items-center mt-6'>
@@ -105,7 +106,7 @@ export default function Edit(dataEdit) {
                         
                     </div>
                 {/*footer*/}
-                <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+                <div className="flex items-center justify-end pr-6">
                   <button
                     className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"

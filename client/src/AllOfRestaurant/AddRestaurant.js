@@ -46,12 +46,12 @@ const AddRestaurant = () => {
         <>
         <Dashboard/>
         <div className='h-screen flex bg-gray-bg1 bg-gradient-to-r from-purple-500 to-pink-500 '>
-            <div className='w-full max-w-md m-auto bg-white rounded-lg border border-primaryBorder shadow-default py-10 px-16'>
+            <div className='w-full max-w-md m-auto bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 rounded-lg border border-primaryBorder shadow-default py-10 px-16'>
                 <h1 className='text-2xl font-medium text-primary mt-4 mb-12 text-center'>
                     Add New Restaurant
                 </h1>
                     <div>
-                        <label htmlFor='email'>Restaurant Name</label>
+                        <label htmlFor='email'>Restaurant's Name</label>
                         <input
                             type='text'
                             className={`w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4`}
@@ -76,12 +76,14 @@ const AddRestaurant = () => {
                     </div>
                     <div>
                         <p className="text-2xl font-medium">Image</p>
-                        <input id="img" className="rounded-lg" type="file" name="image" onChange={ (e) => setImage(e.target.files[0]) } />
+                        <div className = 'mt-5'>
+                        <input id="img" className="file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:font-semibold file:bg-blue-50 file:text-blue-700" type="file" name="image" onChange={ (e) => setImage(e.target.files[0]) } />
+                        </div>
                     </div>
 
-                    <div className='flex justify-center items-center mt-6'>
+                    <div className='flex justify-center m-5 items-center mt-6'>
                         <button
-                            className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                            className="bg-transparent hover:bg-yellow-300 text-white font-semibold hover:text-white py-2 px-4 border border-white hover:border-transparent rounded"
                         onClick={addRes}
                         >
                             Create

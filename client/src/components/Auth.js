@@ -5,27 +5,19 @@ import { useNavigate } from "react-router-dom";
 
 
 const Auth = () => {
+    const Navigate = useNavigate()
 
-    // const {authState:{authLoading, isAuthenticated}} = useContext(AuthContext)
-    // const navigate = useNavigate()
-    // if(authLoading){
+    const token = localStorage.getItem("token");
+    if (token === null) {
+        return <Navigate to="/login" />;
+    }
 
-    // }
-    // else if(isAuthenticated) {
+    else {
+        return <Navigate to ="/dashboard"/>;
+    }
 
-    //     navigate('/dashboard',{ replace: true })
-    // }
-    // else{
+    return <Outlet/>;
 
-    // }
-
-    return (
-        <div className="auth-page">
-            
-                {<Outlet/>}
-            </div>
-    
-    )
 };
 
 export default Auth;

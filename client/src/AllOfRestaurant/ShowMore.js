@@ -8,7 +8,7 @@ export default function ShowMore({name, description,image}) {
   return (
     <>
       <button
-        className=" bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:bg-pink-500 outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+        className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
         type="button"
         onClick={() => setShowModal(true)}
       >
@@ -17,9 +17,9 @@ export default function ShowMore({name, description,image}) {
       {showModal ? (
         <>
           <div
-            className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
+            className="backdrop-blur justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
           >
-            <div className="relative w-auto my-6 mx-auto max-w-3xl">
+            <div className="relative bg-yellow w-auto my-6 mx-auto max-w-3xl">
               {/*content*/}
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 {/*header*/}
@@ -37,7 +37,7 @@ export default function ShowMore({name, description,image}) {
                 </div>
                 {/*body*/}
                 <img className="object-scale-down h-48 w-96" src={image} alt=""/>
-                <div className="relative p-6 flex-auto">
+                <div className="whitespace-normal relative p-6 flex-auto">
                   <p className="my-4 text-slate-500 text-lg leading-relaxed">
                     {description}
                   </p>
